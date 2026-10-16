@@ -1,5 +1,9 @@
 # CloudDrive2 Auto Refresh
 
+**简体中文** | [繁體中文](README.zh-TW.md) | [English](README.en.md)
+
+---
+
 🚀 CloudDrive2 目录自动刷新工具。监控本地文件变动，支持多服务器联动、路径映射、写入稳定检测、防抖队列、失败自动复查与青龙通知。
 
 文件或目录在本地挂载点发生变动后，脚本通过 gRPC 调用 `GetSubFiles(forceRefresh=True)`，刷新各台 CD2 上对应目录。所有启用的服务共用路径映射，每台拥有独立连接和任务队列。
@@ -22,10 +26,12 @@ clouddrive2-auto-refresh/
 ├── clouddrive.proto         # CloudDrive2 协议定义
 ├── requirements.txt        # 运行及协议生成依赖
 ├── LICENSE                 # GNU GPL v3.0 许可证
-└── README.md
+├── README.md               # 简体中文（默认）
+├── README.zh-TW.md         # 繁體中文
+└── README.en.md            # English
 ```
 
-仓库包含以上五个文件。运行时会在脚本目录生成 `cd2_failed_refreshes.json`，请确保目录可写。两个生成模块、失败记录、日志和 `__pycache__` 属于本地文件；如需提交修改，只选择项目源文件。
+仓库包含以上文件。运行时会在脚本目录生成 `cd2_failed_refreshes.json`，请确保目录可写。两个生成模块、失败记录、日志和 `__pycache__` 属于本地文件；如需提交修改，只选择项目源文件。
 
 ## 🚀 使用
 
@@ -139,6 +145,16 @@ python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. clouddrive.p
 - **目录监听初始化缓慢**：检查挂载是否正常、子目录数量及 Linux inotify 限额；各映射目录独立初始化。
 - **图片一直为 0KB**：5 分钟后输出写入超时并按配置通知，检查上传进度和挂载状态。
 - **没有收到手机通知**：青龙中需要正确配置 `notify` 渠道；普通 Python 环境默认只打印通知内容。
+
+## 📈 Star History
+
+<a href="https://www.star-history.com/?repos=ffinly%2Fclouddrive2-auto-refresh&amp;type=date&amp;legend=top-left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ffinly/clouddrive2-auto-refresh&amp;type=date&amp;theme=dark&amp;legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ffinly/clouddrive2-auto-refresh&amp;type=date&amp;legend=top-left" />
+    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ffinly/clouddrive2-auto-refresh&amp;type=date&amp;legend=top-left" />
+  </picture>
+</a>
 
 ## 📄 License
 
